@@ -4,7 +4,9 @@ var router = express.Router();
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
-var cors = require('cors')
+var cors = require('cors');
+var dotenv = require('dotenv');
+dotenv.config();
 
 // Middleware stuff
 app.set('view engine', 'ejs');
@@ -53,9 +55,10 @@ mongoose.connect(process.env.MONGOLAB_URI, (err, database) => {
   }
   console.log("Database connection ready");
 
-  var server = app.listen(process.env.PORT || 3000, () => {
+  const port = process.env.PORT || 5000
+  var server = app.listen(port, () => {
     var port = server.address().port;
-    console.log('Listening on port 3000!')
+    console.log(`Listening on port ${port}!`);
   })
 });
 

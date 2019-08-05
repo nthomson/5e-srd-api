@@ -8,7 +8,7 @@ router
 
   var search_queries = {}
   if (req.query.name !== undefined) {
-    search_queries.name = req.query.name
+    search_queries.name = new RegExp(req.query.name,'i');;
   }
 
   Model.find(search_queries, (err,data) => {

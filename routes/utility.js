@@ -249,35 +249,13 @@ function ClassAPIResource(data) {
 
 
 function NamedAPIResource(data) {
-
-    let mapped = data.map((item) => {
-          return {
-            name: item.name,
-            url: item.url
-          }
-        });
-
-    let sort = mapped.sort((a,b) => {
-
-        var urlA = a.url
-        var urlB = b.url
-        if (urlA < urlB) {
-            return -1;
-        }
-        if (urlA > urlB) {
-            return 1;
-        }
-
-        // names must be equal
-        return 0;
-    })
-
     return{
         count: data.length,
         results: data.map((item) => {
           return {
             name: item.name,
-            url: item.url
+            url: item.url,
+            index: item.index
           }
         })
       }
